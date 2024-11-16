@@ -1,0 +1,51 @@
+import random
+
+intro_message = """
+Hello! I’m your Life Coach Chatbot. I’m here to help you progress in your life, achieve fulfillment, and improve your relationships, career, and day-to-day life. Let's work together to make positive changes!
+"""
+
+instructions = [
+    "Reflect on your goals and write them down. What would you like to achieve in your personal or professional life?",
+    "Break down your goals into smaller, actionable steps.",
+    "Focus on what you can control and take consistent action.",
+    "Celebrate small wins and progress, no matter how small they seem.",
+    "Visualize your success to stay motivated."
+]
+
+positive_emotions = [
+    "You're doing great! Keep pushing forward.",
+    "It's okay to take things one step at a time. Progress is what matters.",
+    "Every effort you make is a step closer to your goal.",
+    "You're capable of achieving great things!"
+]
+
+def get_response(user_input):
+    user_input = user_input.lower()
+    
+    if "goal" in user_input:
+        return random.choice(instructions)
+    elif "struggle" in user_input or "stuck" in user_input:
+        return "I understand challenges can be tough. What’s one small step you could take today to overcome this?"
+    elif "happy" in user_input or "success" in user_input:
+        return random.choice(positive_emotions)
+    elif "relationship" in user_input:
+        return "Healthy relationships are built on trust and communication. Have you tried expressing your feelings or listening to theirs?"
+    elif "career" in user_input:
+        return "Think about what excites you in your career. Is there a skill you’d like to develop or a project you want to tackle?"
+    else:
+        return "I'm here to support you. Tell me more about what's on your mind."
+
+def main():
+    print(intro_message)
+    print("You can type 'exit' at any time to end the chat.")
+    
+    while True:
+        user_input = input("\nYou: ")
+        if user_input.lower() == "exit":
+            print("Thank you for chatting with me! Remember, small steps lead to big changes. Have a wonderful day!")
+            break
+        response = get_response(user_input)
+        print(f"Life Coach: {response}")
+
+if __name__ == "__main__":
+    main()
